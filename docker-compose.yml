@@ -1,0 +1,31 @@
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    container_name: redarbor-sql
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "admin123!"
+    ports:
+      - "1434:1433"
+    volumes:
+      - redarbor_sql_data:/var/opt/mssql
+  api:
+    build:
+      context: .
+      dockerfile: CompuTrabajo.Redarbor.Api/Dockerfile
+    container_name: redarbor-api   
+    environment:
+      ASPNETCORE_URLS: "http://+:8080"
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ConnectionStrings__Default: "Server=sqlserver,1433;Database=RedarborDb;User Id=sa;Password=admin123!;TrustServerCertificate=True;Encrypt=False;"     
+      Jwt__Key: "THIS_IS_A_SUPER_SECRET_KEY_FOR_LOCAL_DEV_123456"
+      Jwt__Issuer: "RedarborAuth"
+      Jwt__Audience: "RedarborApi"
+      Jwt__ExpiresMinutes: "60"
+    ports:
+      - "8080:8080"
+    links:
+      - sqlserver
+
+volumes:
+  redarbor_sql_data:

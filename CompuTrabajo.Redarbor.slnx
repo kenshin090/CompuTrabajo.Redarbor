@@ -1,0 +1,13 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="docker-compose.yml" />
+  </Folder>
+  <Project Path="CompuTrabajo.Redarbor.Api/CompuTrabajo.Redarbor.Api.csproj" />
+  <Project Path="CompuTrabajo.Redarbor.Application.Tests/CompuTrabajo.Redarbor.Application.Tests.csproj" />
+  <Project Path="CompuTrabajo.Redarbor.Application/CompuTrabajo.Redarbor.Application.csproj" />
+  <Project Path="CompuTrabajo.Redarbor.Domain.Common/CompuTrabajo.Redarbor.Application.Common.csproj" />
+  <Project Path="CompuTrabajo.Redarbor.Domain.Test/CompuTrabajo.Redarbor.Domain.Test.csproj" />
+  <Project Path="CompuTrabajo.Redarbor.Domain/CompuTrabajo.Redarbor.Domain.csproj" />
+  <Project Path="CompuTrabajo.Redarbor.Infrastructure.Common/CompuTrabajo.Redarbor.Infrastructure.Common.csproj" Id="0baf5081-34b6-4565-bdbb-1b2083a747e4" />
+  <Project Path="CompuTrabajo.Redarbor.Infrastruture/CompuTrabajo.Redarbor.Infrastruture.csproj" />
+</Solution>

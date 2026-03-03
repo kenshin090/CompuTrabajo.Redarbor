@@ -1,0 +1,42 @@
+@startuml
+title Arquitectura - Vista de Contenedores
+
+skinparam componentStyle rectangle
+
+rectangle "API Web\n(CompuTrabajo.Redarbor.Api)" as API {
+}
+
+rectangle "Capa de Aplicación\n(Commands / Queries / Handlers)" as APP {
+}
+
+rectangle "Capa de Dominio\n(Entidades y Reglas)" as DOMAIN {
+}
+
+rectangle "Infraestructura\n(EF Core, Repositorios, UnitOfWork)" as INFRA {
+}
+
+database "SQL Server\n(RedarborDb)" as DB
+
+API --> APP : HTTP / Controladores -> Manejadores
+APP --> DOMAIN : Usa entidades y reglas de negocio
+APP --> INFRA : Repositorios (interfaces)
+INFRA --> DB : Persistencia (EF Core)
+INFRA --> DOMAIN : Mapea entidades
+
+note right of API
+ - Autenticación JWT
+ - Swagger / OpenAPI
+end note
+
+note left of APP
+ - Patrones `ICommand` / `IQuery`
+ - Transacciones via `UnitOfWork`
+end note
+
+note bottom of INFRA
+ - `EmployeesRepository`
+ - `EmployeeReadRepository`
+ - `EfUnitOfWork` (UoW de EF Core)
+end note
+
+@enduml

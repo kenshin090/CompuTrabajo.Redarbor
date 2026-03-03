@@ -1,0 +1,49 @@
+@startuml
+title Arquitectura - Vista de Componentes (Aplicación)
+
+package "Capa de Aplicación" {
+  [CreateEmployeeCommandHandler]
+  [UpdateEmployeeCommandHandler]
+  [DeleteEmployeeCommandHandler]
+  [GetAllEmployeesQueryHandler]
+  [GetEmployeeQueryHandler]
+
+  [CreateEmployeeCommand]
+  [UpdateEmployeeCommand]
+  [DeleteEmployeeCommand]
+  [GetAllEmployeesQuery]
+  [GetEmployeeQuery]
+}
+
+package "Capa de Dominio" {
+  [Employee]
+  [DomainException]
+}
+
+package "Infraestructura" {
+  [EmployeesRepository]
+  [EmployeeReadRepository]
+  [EfUnitOfWork]
+}
+
+package "Común" {
+  [IRepository<T>]
+  [IReadRepository<T>]
+  [IUnitOfWork]
+}
+
+' Dependencias
+[CreateEmployeeCommandHandler] --> [IRepository<T>] : AddAsync
+[CreateEmployeeCommandHandler] --> [IUnitOfWork] : ExecuteInTransactionAsync
+[CreateEmployeeCommandHandler] --> [Employee]
+
+[UpdateEmployeeCommandHandler] --> [IRepository<T>] : GetAsync / Update
+[DeleteEmployeeCommandHandler] --> [IRepository<T>] : GetAsync / DeleteAsync
+
+[GetAllEmployeesQueryHandler] --> [IReadRepository<T>] : GetAllAsync
+[GetEmployeeQueryHandler] --> [IReadRepository<T>] : GetByIdAsync
+
+[EmployeesRepository] --> [EfUnitOfWork]
+[EmployeesRepository] --> [Employee]
+
+@enduml

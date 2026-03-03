@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CompuTrabajo.Redarbor.Domain.Common\CompuTrabajo.Redarbor.Application.Common.csproj" />
+    <ProjectReference Include="..\CompuTrabajo.Redarbor.Domain\CompuTrabajo.Redarbor.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

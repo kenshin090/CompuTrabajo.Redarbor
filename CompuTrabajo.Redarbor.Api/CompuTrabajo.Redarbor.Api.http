@@ -1,0 +1,6 @@
+@CompuTrabajo.Redarbor.Api_HostAddress = http://localhost:5210
+
+GET {{CompuTrabajo.Redarbor.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
