@@ -3,6 +3,8 @@
 Resumen
 - Proyecto .NET 10 que implementa una API para gestión de empleados con una separación en capas: API, Application, Domain e Infrastructure.
 - Autenticación JWT y documentación OpenAPI/Swagger.
+- Implementacion de patron arquitectonico CQRS
+- Update futuro impleentacion de service bus (RabbitMQ)
 
 Estructura principal
 - `CompuTrabajo.Redarbor.Api` — capa Web/API (controllers, configuración de Swagger y JWT).
